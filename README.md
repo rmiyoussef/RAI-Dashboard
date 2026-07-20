@@ -75,4 +75,19 @@ A daemon script (`scripts/session-watcher.ts`) polls `~/.claude/sessions/` every
 
 MIT — see [LICENSE](LICENSE) for details.
 
-Built by **Rami Youssef** — [github.com/rmiyoussef](https://github.com/rmiyoussef)
+---
+
+<div align="center">
+  <br>
+  <sub>
+    Built with ❤️ by
+    <a href="https://github.com/rmiyoussef">
+      <b>Rami Youssef</b>
+    </a>
+    <br>
+    <small>RAI-Engineering — v1.1</small>
+  </sub>
+  <br>
+</div>
+
+---
