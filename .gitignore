@@ -57,3 +57,13 @@ dev.db-journal
 
 # Test results
 /test-results/
+
+# RAI-Engineering — Database connections (schema only, no secrets)
+.brain/connections/
+.brain/
+
+# RAI-Engineering — NEVER COMMIT
+.brain/memory/
+.brain/tasks/
+.brain/connections/
+
