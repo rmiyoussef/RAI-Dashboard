@@ -88,9 +88,9 @@ A daemon (`scripts/session-watcher.ts`) polls `~/.claude/sessions/` every 3s to 
 | Charts | Recharts |
 | Terminal | xterm.js |
 
-## Versioning
+---
 
-Version tracked in `VERSION`. Auto-bumped on each push.
+---
 
 <div align="center">
   <br>
