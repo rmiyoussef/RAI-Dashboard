@@ -2,7 +2,7 @@
 
 Engineering Session Monitor — manage Claude Code sessions, memory, plans, and skills across projects.
 
-**Version:** v0.1.0 — [GETME.md](GETME.md) for quick reference.
+**Version:** v0.1.0.
 
 Built with **Next.js 16**, **React 19**, **Prisma + libSQL**, and **NextAuth v5**.
 
