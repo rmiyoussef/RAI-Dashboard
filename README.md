@@ -71,4 +71,8 @@ A daemon script (`scripts/session-watcher.ts`) polls `~/.claude/sessions/` every
 
 ---
 
+## License
+
+MIT — see [LICENSE](LICENSE) for details.
+
 Built by **Rami Youssef** — [github.com/rmiyoussef](https://github.com/rmiyoussef)
