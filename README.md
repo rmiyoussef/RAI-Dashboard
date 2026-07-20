@@ -92,12 +92,6 @@ A daemon (`scripts/session-watcher.ts`) polls `~/.claude/sessions/` every 3s to 
 
 Version tracked in `VERSION`. Auto-bumped on each push.
 
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
-
----
-
 <div align="center">
   <br>
   <sub>
@@ -106,9 +100,13 @@ MIT — see [LICENSE](LICENSE) for details.
       <b>Rami Youssef</b>
     </a>
     <br>
-    <small>RAI-Engineering — v1.1</small>
+    <small>RAI-Dashboard — v0.1.0</small>
   </sub>
   <br>
 </div>
 
 ---
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.
