@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id             String           @id @default(cuid())
+  email          String           @unique
+  hashedPassword String
+  name           String?
+  role           Role             @default(USER)
+  isActive       Boolean          @default(true)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  permissions    UserPermission[]
+}
+
+model UserPermission {
+  id       String @id @default(cuid())
+  userId   String
+  tabId    TabId
+  canRead  Boolean @default(true)
+  canWrite Boolean @default(false)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tabId])
+}
+
+model Project {
+  id           String      @id @default(cuid())
+  name         String
+  path         String      @unique
+  description  String?
+  isActive     Boolean     @default(true)
+  lastSyncedAt DateTime?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  sessions     Session[]
+  plans        Plan[]
+  skills       Skill[]
+  memoryFiles  MemoryFile[]
+}
+
+model Session {
+  id              String       @id @default(cuid())
+  claudeSessionId String       @unique
+  projectId       String
+  project         Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  pid             Int?
+  status          SessionStatus @default(ACTIVE)
+  name            String?
+  startedAt       DateTime     @default(now())
+  lastActivityAt  DateTime     @default(now())
+  metadata        String?
+  logs            SessionLog[]
+}
+
+model SessionLog {
+  id        String   @id @default(cuid())
+  sessionId String
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  type      String   @default("info")
+  content   String
+  timestamp DateTime @default(now())
+}
+
+model Plan {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  filename  String
+  content   String   @default("")
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([projectId, filename])
+}
+
+model Skill {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  filename  String
+  content   String   @default("")
+  category  String   @default("general")
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([projectId, filename])
+}
+
+model MemoryFile {
+  id        String         @id @default(cuid())
+  projectId String
+  project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category  MemoryCategory
+  filename  String
+  content   String         @default("")
+  updatedAt DateTime       @updatedAt
+  createdAt DateTime       @default(now())
+
+  @@unique([projectId, category, filename])
+}
+
+enum Role {
+  SUPER_ADMIN
+  USER
+}
+
+enum TabId {
+  DASHBOARD
+  PROJECTS
+  SESSIONS
+  MEMORY
+  PLANS
+  SKILLS
+  USERS
+  TERMINAL
+  SETTINGS
+}
+
+enum SessionStatus {
+  ACTIVE
+  IDLE
+  CLOSED
+}
+
+enum MemoryCategory {
+  DECISIONS
+  LESSONS
+  SESSIONS
+  ARCHITECTURE
+  BUSINESS
+  GUIDELINES
+  TASKS
+  TESTS
+}

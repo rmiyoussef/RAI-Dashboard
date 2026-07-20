@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma
+
+# AI agent tooling directories
+.agents/
+.ai/
+.brain/
+.claude/
+.windsurf/
+
+# Database
+dev.db
+dev.db-journal
+*.db
+*.db-journal
+
+# Test results
+/test-results/
